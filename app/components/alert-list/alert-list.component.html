@@ -1,0 +1,78 @@
+<section class="content-header">
+    <h1>Alerts</h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12" ng-controller="AlertListController as alertlist">
+            <div class="col-md-3">
+                <div class="box box-primary">
+                    <div class="box-header">
+                        <h3 class="box-title">Quick Search</h3>
+                    </div>
+                    <div class="box-body box-profile">
+                        <div class="form-group">
+                            <label for="quickSearchParam">Search for:</label>
+                            <input ng-model="alertlist.query" type="text" class="form-control" id="quickSearchParam"
+                                   placeholder="Enter keyword">
+                        </div>
+                        <div class="form-group">
+                            <label for="orderParams">Sort By</label>
+                            <select ng-model="alertlist.orderProp" class="form-control" id="orderParams">
+                                <option value="owner">By Owner</option>
+                                <option value="-createdAtTimestamp">Newest</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-9">
+                <!--Body content-->
+                <div ng-repeat="alert in alertlist.alerts | filter:alertlist.query | orderBy:alertlist.orderProp">
+                    <ul class="timeline timeline-inverse">
+                        <li class="time-label">
+                        <span class="bg-red">
+                            <a href="#!/alerts/{{alert.id}}" style="color:white">
+                                    {{alert.createdAtTimestamp | date:'dd/MM/yyyy @ h:mma'}}
+                            </a>
+                        </span>
+                        </li>
+                        <li>
+                            <i class="fa fa-bell bg-blue" title="Alert Summary"></i>
+                            <div class="timeline-item">
+                                <span class="time">
+                                    <i class="fa fa-clock-o">{{alert.createdAtTimestamp | date:' h:mma'}}</i>
+                                </span>
+                                <span class="time">
+                                    <i class="fa fa-bomb" title="acknowledged">  ack? {{alert.acknowledged | checkmark }}</i>
+                                </span>
+                                <span class="time">
+                                    <i title="seen">  seen? {{alert.isSeen | checkmark }}</i>
+                                </span>
+                                <h3 class="timeline-header" title="Alert Summary"><a href="#!/alerts/{{alert.id}}">Message
+                                    &nbsp;</a></h3>
+                                <div class="timeline-header no-border">
+                                    <b>{{alert.message}}</b>
+                                </div>
+                                <div class="timeline-footer">
+                                    <p ng-show="alert.tag[0]">
+                                        <strong><i class="fa fa-tags margin-r-5"></i>&nbsp;&nbsp;</strong>
+                                        <span ng-repeat="tag in alert.tag" class="label label-primary margin-r-5">{{tag}}&nbsp;</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li ng-show="alert.owner">
+                            <i class="fa fa-user bg-aqua" title="owner"></i>
+                            <div class="timeline-item">
+                                <h3 class="timeline-header no-border">Owner: <a
+                                        href="mailto:{{ alert.ownerShortName }}">{{
+                                    alert.owner }}</a></h3>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

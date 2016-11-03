@@ -1,3 +1,15 @@
-/**
- * Created by znpzsy on 02.11.2016.
- */
+
+'use strict';
+/* Define the opsApp module */
+angular.module('opsApp', [
+    /* dependencies */
+    'ngRoute',
+    'restangular',
+    'core',
+    'services',
+    'alertDetail',
+    'alertList',
+    'main'
+]);
+
+

@@ -1,10 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<section class="content-header">
+    <h1>Alert Details</h1>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12" ng-controller="AlertDetailController as detail">
+            <div class="col-md-6">
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <i class="fa fa-envelope-o"></i>
+                        <h3 class="box-title">Message</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <blockquote>
+                            <p>{{detail.alert.message}}</p>
+                            <small>created at: {{detail.alert.createdAt}}</small>
+                        </blockquote>
+                    </div>
+                </div>
+                <div class="box box-default" ng-show="detail.alert.teams[0]" title="teams">
+                    <div class="box-header with-border">
+                        <i class="fa fa-group"></i>
+                        <h3 class="box-title"><span ng-repeat="team in detail.alert.teams"
+                                                    class="label label-success margin-r-5">{{team}}&nbsp;</span></h3>
+                    </div>
+                </div>
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <i class="fa fa-text-width"></i>
 
-</body>
-</html>
+                        <h3 class="box-title">Description</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <dl>
+                            <dt>Created:</dt>
+                            <dd>- {{detail.alert.createdAtTimestamp | date:'MMMM dd, yyyy h:mma'}}</dd>
+                            <dt>Updated:</dt>
+                            <dd>- {{detail.alert.updatedAt | date:'MMMM dd, yyyy h:mma'}}</dd>
+                            <dt>Status:</dt>
+                            <dd>- {{detail.alert.status}}</dd>
+                            <dt>Is Seen:</dt>
+                            <dd>- {{ detail.alert.isSeen | checkmark }} {{detail.alert.isSeen }}</dd>
+                            <dt>Acknowledged:</dt>
+                            <dd>- {{ detail.alert.acknowledged | checkmark }} {{detail.alert.acknowledged }}</dd>
+                            <dt>Acknowledged By:</dt>
+                            <dd>- {{detail.alert.createdAtTimestamp | date:'MMMM dd, yyyy h:mma'}}</dd>
+                            <dt>Escalation Ids:</dt>
+                            <dd ng-repeat="escalation in detail.alert.escalationIds">- {{escalation}}</dd>
+                        </dl>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="box box-default" ng-show="detail.alert.owner">
+                    <div class="box-header with-border">
+                        <i class="fa fa-black-tie"></i>
+                        <h3 class="box-title">Owner</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <blockquote>
+                            <a href="mailto:{{ detail.alert.ownerShortName }}">{{ detail.alert.owner }}</a>
+                        </blockquote>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <div class="box box-default" ng-show="detail.alert.tag[0]" title="tags">
+                    <div class="box-header with-border">
+                        <i class="fa fa-tags"></i>
+                        <h3 class="box-title"><span ng-repeat="tag in detail.alert.tag"
+                                                    class="label label-danger margin-r-5">{{tag}}&nbsp;</span></h3>
+                    </div>
+                </div>
+                <notes-list></notes-list>
+            </div>
+        </div>
+    </div>
+</section>

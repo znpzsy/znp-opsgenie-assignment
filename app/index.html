@@ -1,10 +1,194 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="opsApp">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>OpsGenie Alerts Demo</title>
+    <meta name="description" content="OpsGenie Demo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="assets/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="assets/dist/css/skins/skin-black.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body class="hold-transition skin-black sidebar-mini">
+<div class="wrapper">
+    <header class="main-header">
+        <a href="#" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>Ops</b>NG</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>OpsGenie</b>NG</span>
+        </a>
+        <nav class="navbar navbar-static-top" role="navigation">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <!-- Notifications Menu -->
+                    <li class="dropdown notifications-menu">
+                        <!-- Menu toggle button -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="label label-warning">25</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">You have 25 alerts</li>
+                            <li>
+                                <!-- Inner Menu: contains the notifications -->
+                                <ul class="menu">
+                                    <li><!-- start notification -->
+                                        <a href="#!/alerts">
+                                            <i class="fa fa-users text-aqua"></i> 25 alerts available.
+                                        </a>
+                                    </li>
+                                    <!-- end notification -->
+                                </ul>
+                            </li>
+                            <li class="footer"><a href="#!/alerts">View all</a></li>
+                        </ul>
+                    </li>
+                    <!-- User Account Menu -->
+                    <li class="dropdown user user-menu">
+                        <!-- Menu Toggle Button -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <!-- The user image in the navbar-->
+                            <img src="assets/dist/img/user8-128x128.jpg" class="user-image" alt="User Image">
+                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                            <span class="hidden-xs">OpsGenie User</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- The user image in the menu -->
+                            <li class="user-header">
+                                <img src="assets/dist/img/user8-128x128.jpg" class="img-circle" alt="User Image">
+
+                                <p>
+                                    Alexander Pierce - Web Developer
+                                    <small>Member since Nov. 2012</small>
+                                </p>
+                            </li>
+                            <!-- Menu Body -->
+                            <li class="user-body">
+                                <div class="row">
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Followers</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Sales</a>
+                                    </div>
+                                    <div class="col-xs-4 text-center">
+                                        <a href="#">Friends</a>
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Control Sidebar Toggle Button -->
+                    <li>
+                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel">
+                <div class="pull-left image">
+                    <img src="assets/dist/img/user8-128x128.jpg" class="img-circle" alt="User Image">
+                </div>
+                <div class="pull-left info">
+                    <p>OpsGenie User</p>
+                    <!-- Status -->
+                    <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                </div>
+            </div>
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu">
+                <li class="header">HEADER</li>
+                <!-- Optionally, you can add icons to the links -->
+                <li class="active">
+                    <a href="#!/alerts"><i class="fa fa-link"></i> <span>View Alerts</span></a>
+                </li>
+            </ul>
+            <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <div class="content-wrapper">
+        <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+            your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- Main content -->
+        <section class="content">
+            <div ng-view></div>
+        </section>
+    </div>
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+            znpzsy
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2016 <a href="https://github.com/znpzsy">znpzsy</a>.</strong> All rights reserved.
+    </footer>
+</div>
+
+
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+ -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="assets/dist/js/app.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/lodash/dist/lodash.js"></script>
+<script src="bower_components/restangular/dist/restangular.js"></script>
+<!-- <script src="bower_components/angular-resource/angular-resource.js"></script> -->
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="app.module.js"></script>
+<script src="app.config.js"></script>
+<script src="components/main/main.module.js"></script>
+<script src="components/main/main.component.js"></script>
+<script src="common/core.module.js"></script>
+<script src="common/filters/checkmark.filter.js"></script>
+<script src="components/note-list/note-list.module.js"></script>
+<script src="components/note-list/note-list.component.js"></script>
+<script src="services/services.module.js"></script>
+<script src="services/alert/alert.module.js"></script>
+<script src="services/alert/alert.service.js"></script>
+<script src="components/alert-list/alert-list.module.js"></script>
+<script src="components/alert-list/alert-list.component.js"></script>
+<script src="components/alert-detail/alert-detail.module.js"></script>
+<script src="components/alert-detail/alert-detail.component.js"></script>
 </body>
 </html>
